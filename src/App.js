@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {createStore, compose} from 'redux'
+import {Provider} from 'react-redux';
+import reducers from './Reducers';
+import DisplayContainer from './container/DisplayContainer';
+// import { applyMiddleware } from 'redux';
+// import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
+import { devToolsEnhancer } from 'redux-devtools-extension/logOnlyInProduction';
+
+// const composeEnhancers =
+//   typeof window === 'object' &&
+//   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+//     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+//       // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+//     }) : compose;
+
+// const enhancer = composeEnhancers(
+//   applyMiddleware(...middleware),
+//   // other store enhancers if any
+// );
+const store = createStore(reducers, /* preloadedState, */ devToolsEnhancer(
+  // options like actionSanitizer, stateSanitizer
+));;
+// const store = createStore(reducers +  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store = {store}>
+      <DisplayContainer/>
+    </Provider>
   );
 }
 
