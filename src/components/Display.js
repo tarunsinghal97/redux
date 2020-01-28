@@ -16,7 +16,7 @@ class Display extends React.Component {
     return (
       <div>
         <div style={{width : '100%', height : '80px', backgroundColor : '#ffc266', fontSize : '35px', textAlign : 'left',  borderBottomRightRadius : '25px'}}>
-        <font color='black'><b>Mind</b></font><font color='white'><b><i>T!ckle</i></b></font>
+        <font color='black'><b>Mind</b></font><font color='white'><b><i>Tickle</i></b></font>
         </div>
         <div style={{display: 'flex', margin : 'auto', marginLeft : '130px', marginTop : '25px' }}>
           <Button type='primary' onClick={ ()=> {
